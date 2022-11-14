@@ -2,12 +2,24 @@
 #include <string>
 using namespace std;
 
-class Cialo {
+class Body {
 	public:
 		int Limbs;
 		int Eyes;
-		//Cialo(){this->Limbs=0;this->Eyes=0;}
-		Cialo(int Limbs, int Eyes){this->Limbs=Limbs;this->Eyes=Eyes;}
+		Body()
+		{
+			this->Limbs=0;
+			this->Eyes=0;
+		}
+		Body(int Limbs, int Eyes)
+		{
+			this->Limbs=Limbs;
+			this->Eyes=Eyes;
+		}
+		void display()
+		{
+			cout << "\n" << "Number of limbs: " << Limbs << "	Number of eyes: " << Eyes << "\n";
+		}
 };
 
 class Animal {
@@ -15,19 +27,29 @@ class Animal {
 		string Name;
 		string Animal_Name;
 		int Age;
-		Cialo &cialo;
 	public:
-		//Animal(){this->Name="";this->Animal_Name=A"";this->Age=0;this->cialo=0;}
-		Animal(string Name, string Animal_Name, int Age, Cialo &cialo){this->Name=Name;this->Animal_Name=Animal_Name;this->Age=Age;this->&cialo=&cialo;}
+		Animal()
+		{
+			this->Name="";
+			this->Animal_Name="";
+			this->Age=0;
+		}
+		Animal(string Name, string Animal_Name, int Age)
+		{
+			this->Name=Name;
+			this->Animal_Name=Animal_Name;
+			this->Age=Age;
+		}
 		
 		void display()
 		{
-			cout << "\n" << Animal_Name << " ma na imie " << Name << ". Ma " << Age << " lat i ma " << a.Limbs << " nogi.\n";
+			cout << "Name: " << Name << "	Animal: " << Animal_Name << "	Age: " << Age;
 		}
 };
 
 int main() {
-	Cialo wielblad(4,2);
-	Animal a("imie","wielblad",15,wielblad);
+	Body camel(4,2);
+	Animal a("imie","wielblad",15);
 	a.display();
+	camel.display();
 }
