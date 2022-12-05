@@ -7,6 +7,8 @@ class food
 		int value;
 		int maxValue;
 		int calories;
+		int elfNumA;
+		int elfNumB;
 	public:
 		food(int value, int maxValue)
 		{
@@ -15,6 +17,7 @@ class food
 		}
 		void findFood() 
 		{
+			elfNumA = 1;
 			while(!cin.eof())
 			{
 				cin >> calories;
@@ -26,15 +29,18 @@ class food
         		  		if(value > maxValue)
         		   		{
         		   			maxValue = value;
+						elfNumB = elfNumA;
         				}
+					elfNumA++;
         				value = 0;
     				}
 			}
         		if(value > maxValue)
         		{
         			maxValue = value;
+				elfNumB = elfNumA;
         		}
-			cout << maxValue << endl;
+			cout << maxValue << ", " << elfNumB << endl;
 		}
 };
 
