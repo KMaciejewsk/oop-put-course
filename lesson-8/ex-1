@@ -1,1 +1,40 @@
+//Forecast.java
+public interface Forecast {
+  float real_temperature(float temperature);
+  final class Fake implements Forecast {
+      @Override
+      public float real_temperature(float temperature) {
+          return temperature;
+      }
+  }
+}
 
+//Weather.java
+public class Weather {
+    private final Forecast forecast;
+    private final float temperature;
+    public Weather(Forecast a, float b) {
+        this.forecast = a;
+        this.temperature = b;
+    }
+    public Weather real_temperature() {
+        return new Weather(this.forecast, this.temperature)
+    }
+    @Override
+    public String to_string() {
+        return Float.to_string(temperature);
+    }
+}
+
+//Main.java
+public class Application {
+    public static void Main(String[] args) {
+        Forecast forecast = new Forecast.Fake();
+        Weather weather = new Weather(forecast, 18.9f);
+        Weather temperature_irl = weather.real_temperature();
+        System.out.print(weather.real_temperature());
+        System.out.print(temperature_irl.to_string());
+        System.out.print(forecast.real_temperature(18.9f));
+        assert "18.9".equals(temperature_irl.to_string());
+    }
+}
